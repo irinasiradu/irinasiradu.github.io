@@ -2,30 +2,25 @@ import React from "react";
 
 import styled from "styled-components";
 
-import Demo from "./Icons/Demo";
+import img1 from "../assets/img/Pisicina-Phoenix-Cernica-005.jpg";
+import img2 from "../assets/img/Pisicina-Phoenix-Cernica-007.jpg";
+
+const noPaddingForMobile = `@media screen and (max-width: 900px) {
+  padding: 0px;  
+}`;
 
 const Section = styled.section`
-  padding: 30px 0 225px;
-`;
-const SectionTitle = styled.h2`
-  font-size: 26px;
-  font-weight: 300;
-  line-height: normal;
-  color: #1b5cce;
-  text-align: center;
-  margin-bottom: 2px;
+  padding: 10px 0 10px;
+  ${noPaddingForMobile}
 `;
 
-const SubTitle = styled.h5`
-  font-size: 14px;
-  font-weight: normal;
-  line-height: normal;
-  text-align: center;
-  color: #aeaeae;
-  margin-bottom: 25px;
-  @media (min-width: 992px) {
-    margin-bottom: 50px;
-  }
+const ScheduleTile = styled.div`
+  background: #616582;
+  font-size: 18px;
+  ${noPaddingForMobile}
+`;
+const Tile = styled.div`
+  ${noPaddingForMobile}
 `;
 
 const Box = styled.div`
@@ -34,8 +29,10 @@ const Box = styled.div`
   align-items: center;
   text-align: center;
   margin-bottom: 30px;
-  &:hover {
-    transform: translateY(-5px) !important;
+  @media screen and (min-width: 900px) {
+    &:hover {
+      transform: translateY(-5px) !important;
+    }
   }
 
   @media (min-width: 992px) {
@@ -43,40 +40,10 @@ const Box = styled.div`
   }
 `;
 
-const IconWrap = styled.div`
-  width: 150px;
-  height: 150px;
-  border-radius: 150px;
-  border: solid 1px #eff2f9;
-  background-color: #f8faff;
-  margin-bottom: 30px;
-  position: relative;
-  > svg {
-    transition: all 0.3s ease-in;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  &:hover {
-    > svg {
-      transform: translate(-50%, -50%) rotateY(360deg);
-    }
-  }
-`;
-
-const BoxTitle = styled.h4`
-  font-size: 18px;
-  font-weight: 300;
-  line-height: normal;
-  color: #5273c7;
-`;
-
 const Text = styled.p`
-  font-size: 12px;
-  font-weight: normal;
+  padding-top: 5%;
   line-height: 1.58;
-  color: #8f8f8f;
+  color: #FFF;
   margin-bottom: 0;
   max-width: 350px;
 `;
@@ -86,49 +53,30 @@ const About = () => {
   return (
     <Section id="about">
       <div className="container">
-        <SectionTitle>Lorem ipsum dolor sit amet</SectionTitle>
-        <SubTitle>Lorem ipsum dolor sit amet</SubTitle>
+        {/* <SectionTitle>Lorem ipsum dolor sit amet</SectionTitle>
+        <SubTitle>Lorem ipsum dolor sit amet</SubTitle> */}
         <div className="row">
-          <div className="col-lg-4">
+          <Tile className="col-lg-4">
             <Box data-aos={width >= 1400 ? "fade-right" : "fade-up"}>
-              <IconWrap>
-                <Demo />
-              </IconWrap>
-              <BoxTitle>Declarative</BoxTitle>
-              <Text>
-                React makes it painless to create interactive UIs. Design simple
-                views for each state in your application, and React will
-                efficiently update and render just the right components when
-                your data changes.
-              </Text>
+              <img src={img2} alt="" style={{ width: "100%" }} />
             </Box>
-          </div>
-          <div className="col-lg-4">
+          </Tile>
+          <ScheduleTile className="col-lg-4">
             <Box data-aos="fade-up">
-              <IconWrap>
-                <Demo />
-              </IconWrap>
-              <BoxTitle>Component-Based</BoxTitle>
               <Text>
-                Since component logic is written in JavaScript instead of
-                templates, you can easily pass rich data through your app and
-                keep state out of the DOM.
+                Va așteptăm cu drag.
+                <br />
+                <b>Cununia religioasa</b> va avea loc la ora 17:00 pe pajiștea de lângă lac.
+                <br />
+                <b>Petrecerea</b> va continua pe terasa de la piscină începând cu ora 18:00.
               </Text>
             </Box>
-          </div>
-          <div className="col-lg-4">
-            <Box data-aos={width >= 1400 ? "fade-left" : "fade-up"}>
-              <IconWrap>
-                <Demo />
-              </IconWrap>
-              <BoxTitle>Learn Once, Write Anywhere</BoxTitle>
-              <Text>
-                We don’t make assumptions about the rest of your technology
-                stack, so you can develop new features in React without
-                rewriting existing code.
-              </Text>
+          </ScheduleTile>
+          <Tile className="col-lg-4">
+            <Box data-aos={width >= 1400 ? "fade-right" : "fade-up"}>
+              <img src={img1} alt="" style={{ width: "100%" }} />
             </Box>
-          </div>
+          </Tile>
         </div>
       </div>
     </Section>

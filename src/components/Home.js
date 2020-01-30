@@ -1,9 +1,7 @@
 import React from "react";
 
 import styled from "styled-components";
-
-// import bgImg from "../assets/img/bg-home.jpg";
-// background-image: url(${bgImg});
+import moment from "moment"
 
 const Section = styled.section`
   position: relative;
@@ -13,17 +11,6 @@ const Section = styled.section`
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
-  &:after,
-  &:before {
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    bottom: -1px;
-    border-bottom: 10px solid #fff;
-    z-index: 2;
-  }
 
   &:before {
     left: 0;
@@ -132,7 +119,7 @@ const Home = () => {
           <br />
           <a href="https://www.phoenixcernica.ro/">Pheonix Cernica</a>, Pantelimon, IF, Romania
           <br />
-          179 Days To Go!
+          Au mai ramas {moment("2020-07-18").diff(moment(), "day")} zile
         </SubTitle>
       </div>
     </Section>

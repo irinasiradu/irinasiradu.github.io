@@ -107,7 +107,7 @@ class ContactBox extends Component {
 
     return (
       <React.Fragment>
-        <div className='form-container'>
+        <div className='form-container' style={{ backgroundColor: "#EF8354" }}>
           <form onSubmit={this.handleSubmit} disabled={this.state.sendingMessage}>
             <div className='form-group row'>
               <label htmlFor='email' className='col-sm-2 col-form-label'>

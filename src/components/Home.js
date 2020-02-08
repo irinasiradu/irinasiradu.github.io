@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import moment from "moment"
 
-import { commonUi } from "../shared/Common.js"
+import { style, colors } from "../shared/Common.js"
 import bgImg from "../assets/img/DSC_0432.JPG";
 
 const Section = styled.section`
@@ -16,8 +16,8 @@ const Section = styled.section`
   background-position: center;
   background-attachment: fixed;
   background-image: url(${bgImg});
-  color: ${commonUi.textColor};
-  font-family: ${commonUi.fontFamily};
+  color: ${colors.normalText};
+  font-family: ${style.fontFamily};
   
   text-align: center;
 
@@ -27,7 +27,8 @@ const Section = styled.section`
   }
 
   & .box {
-    background-color: rgba(244,244,244, 0.9); 
+    background-color: ${colors.lightGrey};
+    opacity: 0.9; 
     height: 100%;
     padding-top: 6%;
     padding-bottom: 25%;
@@ -51,8 +52,8 @@ const Section = styled.section`
     } 
 
     & .circle {
-      background-color: ${commonUi.emphColor}; 
-      color: ${commonUi.whiteColor}; 
+      background-color: ${colors.important}; 
+      color: ${colors.white}; 
       
       width: 100px;
       height: 100px;
@@ -97,9 +98,9 @@ const Section = styled.section`
   }
   
   & a {
-    color: ${commonUi.textColor};
+    color: ${colors.normalText};
     cursor: pointer;
-    border-bottom: 1px solid ${commonUi.emphColor};
+    border-bottom: 1px solid ${colors.important};
   }
 `;
 

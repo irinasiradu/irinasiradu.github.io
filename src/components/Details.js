@@ -7,7 +7,8 @@ import img2 from "../assets/img/Pisicina-Phoenix-Cernica-007.jpg";
 import { style, colors } from "../shared/Common.js"
 
 const Section = styled.section`
-  padding-top: 5%;
+  padding-top: 2%;
+  padding-bottom: 5%;
   padding-right: 0px;
   padding-left: 0px;
   margin-right: auto;
@@ -20,123 +21,52 @@ const Section = styled.section`
   .box {
     padding-left: 15%;
     padding-right: 15%;
+    
+    @media (max-width: 767px) {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
   }
 
   .title {
-    padding-bottom: 5%;
     text-align: center;
     font-size: 50px;
     font-weight: 100;
+    
+    @media (max-width: 767px) {
+      font-size: 30px;
+    }
   }
 
-  & ul {
-    display: block;
-  }
-
-  .timeline-pill {
-    background-color: ${colors.important};
-    border-top-right-radius: 50%;
-    border-top-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-    height: 20px;
-    width: 20px;
-    display: inline-block;
-  }
-
-  .timeline-card-title {
+  .card-title {
     font-size: 30px;
+    
+    @media (max-width: 767px) {
+      font-size: 20px;
+    }
   }
 
   .important {
     color: ${colors.important};
   }
 
-  .timeline-card-image {
+  .card-image {
     display: block;
     max-width: 100%;
     height: auto;
   }
   
-  .timeline {
-    float: left;
-    list-style: none;
-    padding: 20px 0 20px;
+  .card {
+    border-radius: 2px;
+    padding: 20px 20px 20px 20px;
     position: relative;
-    display: grid;
-    width: 100%;
-
-    &:before {
-      top: 0;
-      bottom: 0;
-      position: absolute;
-      content: " ";
-      width: 3px;
-      background-color: ${colors.grey};
-      left: 50%;
-      margin-left: -1.5px;
-    }
-
-    & li {
-      display: list-item;
-      margin-top: -25%;
-      margin-bottom: 20px;
-      position: relative;
-
-      &:first-child {
-        margin-top: -27px;
-
-        .timeline-pill {
-          position: absolute;
-          top: 33px;
-          left: 49%;
-        }
-      }
-    }
-    
-    .timeline-card {
-      width: 46%;
-      border-radius: 2px;
-      padding: 20px 20px 20px 20px;
-      position: relative;
-      background: ${colors.white};
-      border: 2px solid ${colors.grey};
-
-      &:before {
-        position: absolute;
-        top: 24px;
-        right: -18px;
-        display: inline-block;
-        border-top: 17px solid ${colors.lightGrey};
-        border-left: 17px solid ${colors.grey};
-        border-right: 0 solid ${colors.grey};
-        border-bottom: 18px solid ${colors.lightGrey};
-        content: " ";
-    }
-  }
-  
-  .timeline > li.timeline-inverted {
-    margin-left: 50%;
+    background: ${colors.white};
+    border: 2px solid ${colors.grey};
   }
 
-  .timeline > li > .timeline-card {
-    float: left;
-  }
-
-  .timeline > li.timeline-inverted > .timeline-card {
-    float: right;
-
-    &:before {
-      position: absolute;
-      top: 24px;
-      right: 18px;
-      display: inline-block;
-      border-top: 17px solid ${colors.lightGrey};
-      border-left: 17px solid ${colors.grey};
-      border-right: 0 solid ${colors.grey};
-      border-bottom: 18px solid ${colors.lightGrey};
-      content: " ";
-    }
+  .card-root {
+    margin-top:5%;
+    margin-bottom:5%;
   }
 `;
 
@@ -154,20 +84,18 @@ const PartyTitle = () => {
     </Fragment>);
 }
 
-const TimelineItem = ({ inverted, title, imageUrl }) => {
-  const rootClass = inverted ? "timeline-inverted" : "";
+const TimelineItem = ({ title, imageUrl }) => {
   return (
-    <li className={rootClass}>
-      <div className="timeline-pill"></div>
-      <div className={"timeline-card"}>
-        <div className="timeline-card-title">
+    <div className="col-md-6 col-sm-12 card-root">
+      <div className={"card"}>
+        <div className="card-title">
           {title}
         </div>
-        <div className="timeline-card-body">
-          <img src={imageUrl} className="timeline-card-image" alt="" />
+        <div className="card-body">
+          <img src={imageUrl} className="card-image" alt="" />
         </div>
       </div>
-    </li>
+    </div>
   )
 }
 
@@ -176,18 +104,16 @@ const Details = () => {
     <Section id="details">
       <div className="box">
         <div className="title">Va așteptăm cu drag</div>
-        <div>
-          <ul className="timeline">
-            <TimelineItem
-              title={<CeremonyTitle />}
-              imageUrl={img1}
-            />
-            <TimelineItem
-              inverted
-              title={<PartyTitle />}
-              imageUrl={img2}
-            />
-          </ul>
+        <div className="row">
+          <TimelineItem
+            title={<CeremonyTitle />}
+            imageUrl={img1}
+          />
+          <TimelineItem
+            inverted
+            title={<PartyTitle />}
+            imageUrl={img2}
+          />
         </div>
       </div>
     </Section >

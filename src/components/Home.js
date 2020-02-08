@@ -123,7 +123,7 @@ const Home = ({ localization }) => {
           </span>
           <br />
           <span className="other">
-            <a href="https://www.google.com/maps/place/Piscina+Phoenix+Cernica/@44.4345628,26.2413371,17z/data=!3m1!4b1!4m5!3m4!1s0x40b1fba2a583b05f:0x4afbbc6bd59729d5!8m2!3d44.434559!4d26.2435258">Pheonix Cernica</a>, Pantelimon, IF, Romania
+            <a href="https://www.google.com/maps/place/Piscina+Phoenix+Cernica/@44.4345628,26.2413371,17z/data=!3m1!4b1!4m5!3m4!1s0x40b1fba2a583b05f:0x4afbbc6bd59729d5!8m2!3d44.434559!4d26.2435258" target="_blank" rel="noopener noreferrer">Pheonix Cernica</a>, Pantelimon, IF, Romania
             <br />
             {localization.daysLeft(moment("2020-07-18").diff(moment(), "day"))}
           </span>

@@ -14,7 +14,7 @@ export const colors = {
 export const localizations = {
     "ro": {
         homeDate: "18 Iulie 2020",
-        daysLeft: (nrDays) => (<Fragment>Au mai ramas <b>{nrDays}</b> zile</Fragment>),
+        daysLeft: (nrDays) => nrDays && (<Fragment>Au mai ramas <b>{nrDays}</b> zile</Fragment>),
         detailsTitle: "Vă așteptăm!",
         ceremonyTitle:
             <Fragment>
@@ -36,7 +36,7 @@ export const localizations = {
     },
     "fr": {
         homeDate: "18 juillet 2020",
-        daysLeft: (nrDays) => (<Fragment><b>{nrDays}</b> jours restants</Fragment>),
+        daysLeft: (nrDays) => nrDays && (<Fragment><b>{nrDays}</b> jours restants</Fragment>),
         detailsTitle: "Nous vous invitons!",
         ceremonyTitle:
             <Fragment>

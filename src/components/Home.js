@@ -16,7 +16,7 @@ const Section = styled.section`
   background-position: center;
   background-attachment: fixed;
   background-image: url(${bgImg});
-  color: ${colors.normalText};
+  color: ${colors.grey};
   font-family: ${style.fontFamily};
   
   text-align: center;
@@ -98,7 +98,7 @@ const Section = styled.section`
   }
   
   & a {
-    color: ${colors.normalText};
+    color: ${colors.grey};
     cursor: pointer;
     border-bottom: 1px solid ${colors.important};
   }

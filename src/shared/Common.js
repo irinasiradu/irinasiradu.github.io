@@ -3,7 +3,7 @@ export const style = {
 }
 
 export const colors = {
-    normalText: "#7b7571",
+    grey: "#7b7571",
     lightGrey: "#f4f4f4",
     white: "#fff",
     important: "salmon",

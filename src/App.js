@@ -33,7 +33,7 @@ const App = () => {
       <main>
         <Home />
         <Details />
-        <Rsvp />
+        {/* <Rsvp /> */}
       </main>
     </Fragment>
   );

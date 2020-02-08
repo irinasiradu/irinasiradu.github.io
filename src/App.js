@@ -4,8 +4,8 @@ import $ from "jquery";
 
 // import Header from "./components/Header";
 import Home from "./components/Home";
-import Schedule from "./components/About";
-import ContactBox from "./components/ContactBox";
+import Details from "./components/Details";
+import Rsvp from "./components/Rsvp";
 
 import "aos/dist/aos.css";
 import "./assets/styles/main.scss";
@@ -30,11 +30,10 @@ const App = () => {
 
   return (
     <Fragment>
-      {/* <Header /> */}
       <main>
         <Home />
-        <Schedule />
-        <ContactBox />
+        <Details />
+        <Rsvp />
       </main>
     </Fragment>
   );

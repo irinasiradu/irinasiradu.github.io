@@ -1,22 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=latin-ext');
+// @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,300,700");
 
 html {
-  font-size: $baseFontSize;
+    font-size: $baseFontSize;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+    font-family: "Oswald", Verdana, Geneva, sans-serif;
 }
 
 a,
 a:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
-@media (max-width: 991px) {
-  .container {
-    padding-left: 20px;
-    padding-right: 20px;
-    min-width: 100%;
-  }
-}
+// @media (max-width: 991px) {
+//     .container {
+//         padding-left: 20px;
+//         padding-right: 20px;
+//         min-width: 100%;
+//     }
+// }

@@ -3,124 +3,128 @@ import React from "react";
 import styled from "styled-components";
 import moment from "moment"
 
+import { commonUi } from "../shared/Common.js"
+import bgImg from "../assets/img/DSC_0432.JPG";
+
 const Section = styled.section`
-  position: relative;
-  padding-top: 138px;
-  padding-bottom: 288px;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-right: auto;
+  margin-left: auto;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
-  &:before {
-    left: 0;
-    border-right: 12px solid transparent;
-    border-left: calc(50vw - 12px) solid #fff;
-  }
-
-  &:after {
-    right: 0;
-    border-left: 12px solid transparent;
-    border-right: calc(50vw - 12px) solid #fff;
-  }
-
-  @media (min-width: 992px) {
-    padding-left: 110px;
-    padding-right: 110px;
-    padding-top: 13vh;
-    padding-bottom: 13vh;
-  }
-
-  .container {
-    font-family: Nunito Sans;
-    //font-family: 'Dancing Script', cursive;
-    & h1 {  
-      font-size: 48px;
-      font-weight: 700;
-    }
-    & h5 {  
-      font-size: 18px;
-      font-weight: 500;
-    }
-    & a {
-      //color: #1B0E1B;
-      color: #fff;
-      text-decoration: underline;
-    }
-    z-index: 1;
-    user-select: none;
-    cursor: default;
-  }
-`;
-
-const BgOverlay = styled.div`
-  background: linear-gradient(33deg, #293b51, #7B719D);
-  opacity: 0.9;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  top: 0;
-
-  @media (min-width: 992px) {
-    background-image: linear-gradient(62deg,  #293b51, #7B719D);
-  }
-`;
-
-const HomeTitle = styled.h1`
-  font-weight: 300;
+  background-image: url(${bgImg});
+  color: ${commonUi.textColor};
+  font-family: ${commonUi.fontFamily};
+  
   text-align: center;
-  color: #fff;
-  font-size: 22px;
-  line-height: 1.55;
-  margin-bottom: 23px;
 
-  @media (min-width: 992px) {
-    font-size: 38px;
-    line-height: 1.39;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0;
+  height: 800px;
+  @media (max-width: 767px) {
+    height: auto
   }
-`;
 
-const SubTitle = styled.h5`
-  font-size: 12px;
-  font-weight: normal;
-  line-height: 1.83;
-  text-align: center;
-  color: #ffffff;
+  & .box {
+    background-color: rgba(244,244,244, 0.9); 
+    height: 100%;
+    padding-top: 6%;
+    padding-bottom: 25%;
+  }
 
-  @media (min-width: 992px) {
-    max-width: 385px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 49px;
+  & .title {  
+    font-weight: 300;
+    list-style: none;
+    
+    font-size: 100px;
+    @media (max-width: 767px) {
+      font-size: 37px;
+      display: inline;
+    }
+
+    & li{
+      display: inline-block;
+      @media (max-width: 767px) {
+        display: list-item;
+      }
+    } 
+
+    & .circle {
+      background-color: ${commonUi.emphColor}; 
+      color: ${commonUi.whiteColor}; 
+      
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+      font-size: 63px;
+      top -15px;
+      line-height: 1.5em;
+      margin: 0px;
+      position: relative;
+      margin-left: 0.25em;
+      margin-right: 0.25em;
+
+      @media (max-width: 767px) {
+        width: 64px;
+        height: 64px;
+        font-size: 41px;
+        line-height: 1.5em;
+        top: 0px;
+        margin: auto;
+      }
+    }
+  }
+
+  & .date {
+    font-weight: 300;
+    font-size: 50px;
+
+    @media (max-width: 767px) {
+      font-size: 30px;
+      margin-top: 30px;
+    }
+  }
+
+  & .other {
+    //font-weight: 300;
+    font-size: 30px;
+
+    @media (max-width: 767px) {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  }
+  
+  & a {
+    color: ${commonUi.textColor};
+    cursor: pointer;
+    border-bottom: 1px solid ${commonUi.emphColor};
   }
 `;
 
 const Home = () => {
   return (
     <Section id="home">
-      <BgOverlay />
-      <div className="container">
-        <HomeTitle data-aos="zoom-in">
-          Irina &amp; Radu
-        </HomeTitle>
-        <SubTitle
+      <div className="box">
+        <ul data-aos="zoom-in" className="title">
+          <li>Irina</li>
+          <li className="circle">&amp;</li>
+          <li>Radu</li>
+        </ul>
+        <div
           data-aos="fade-up"
           data-aos-easing="ease"
           data-aos-delay="400"
         >
-          18 Iulie, 2020
+          <span className="date">18 Iulie, 2020</span>
           <br />
-          <a href="https://www.phoenixcernica.ro/">Pheonix Cernica</a>, Pantelimon, IF, Romania
-          <br />
-          Au mai ramas {moment("2020-07-18").diff(moment(), "day")} zile
-        </SubTitle>
+          <span className="other">
+            <a href="https://www.google.com/maps/place/Piscina+Phoenix+Cernica/@44.4345628,26.2413371,17z/data=!3m1!4b1!4m5!3m4!1s0x40b1fba2a583b05f:0x4afbbc6bd59729d5!8m2!3d44.434559!4d26.2435258">Pheonix Cernica</a>, Pantelimon, IF, Romania
+            <br />
+            Au mai ramas <b>{moment("2020-07-18").diff(moment(), "day")}</b> zile
+          </span>
+        </div>
       </div>
     </Section>
   );

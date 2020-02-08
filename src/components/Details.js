@@ -4,51 +4,52 @@ import styled from "styled-components";
 
 import img1 from "../assets/img/Pisicina-Phoenix-Cernica-005.jpg";
 import img2 from "../assets/img/Pisicina-Phoenix-Cernica-007.jpg";
+import bgImg from "../assets/img/img_bg_4.jpg";
 
 const noPaddingForMobile = `@media screen and (max-width: 900px) {
   padding: 0px;  
 }`;
 
 const Section = styled.section`
-  padding: 10px 0 10px;
-  ${noPaddingForMobile}
+  // padding: 10px 0 10px;
+  // ${noPaddingForMobile}
 `;
 
 const ScheduleTile = styled.div`
-  background: #616582;
-  font-size: 18px;
-  ${noPaddingForMobile}
+  // background-image: url(${bgImg});
+  // font-size: 18px;
+  // ${noPaddingForMobile}
 `;
 const Tile = styled.div`
-  ${noPaddingForMobile}
+  // ${noPaddingForMobile}
 `;
 
 const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 30px;
-  @media screen and (min-width: 900px) {
-    &:hover {
-      transform: translateY(-5px) !important;
-    }
-  }
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // text-align: center;
+  // margin-bottom: 30px;
+  // @media screen and (min-width: 900px) {
+  //   &:hover {
+  //     transform: translateY(-5px) !important;
+  //   }
+  // }
 
-  @media (min-width: 992px) {
-    margin-bottom: 0;
-  }
+  // @media (min-width: 992px) {
+  //   margin-bottom: 0;
+  // }
 `;
 
 const Text = styled.p`
-  padding-top: 5%;
-  line-height: 1.58;
-  color: #FFF;
-  margin-bottom: 0;
-  max-width: 350px;
+  // padding-top: 5%;
+  // line-height: 1.58;
+  // color: #FFF;
+  // margin-bottom: 0;
+  // max-width: 350px;
 `;
 
-const About = () => {
+const Details = () => {
   const width = window.innerWidth;
   return (
     <Section id="about">
@@ -83,4 +84,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Details;

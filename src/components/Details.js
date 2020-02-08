@@ -2,8 +2,9 @@ import React, { Fragment } from "react";
 
 import styled from "styled-components";
 
-import img1 from "../assets/img/Pisicina-Phoenix-Cernica-005.jpg";
-import img2 from "../assets/img/Pisicina-Phoenix-Cernica-007.jpg";
+import img1 from "../assets/img/Pisicina-Phoenix-Cernica-007.jpg";
+import img2 from "../assets/img/Pisicina-Phoenix-Cernica-005.jpg";
+
 import { style, colors } from "../shared/Common.js"
 
 const Section = styled.section`

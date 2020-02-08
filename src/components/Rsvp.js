@@ -3,21 +3,41 @@ import React, { Component } from 'react';
 import styled from "styled-components";
 import axios from 'axios';
 
-import bgImg from "../assets/img/img_bg_4.jpg";
+import { style, colors } from "../shared/Common.js"
 
+const Section = styled.div`
+  padding-top: 2%;
+  padding-bottom: 5%;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: ${colors.white};
+  color: ${colors.grey};
+  font-family: ${style.fontFamily};
+  overflow: hidden;
+  align-items: normal;
 
-const Container = styled.div`
-  // background-image: url(${bgImg});
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // font-size: 18px;
-  // color: #fff;
-`;
+  .title {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 100;
+    
+    @media (max-width: 767px) {
+      font-size: 30px;
+    }
+  }
 
-const FormContainer = styled.div`
-  // padding-top: 10px;
-  // padding-bottom: 10px;
-  // font-size: 18px;
+  .rsvp-button {
+    background: ${colors.important};
+    border: solid 2px ${colors.important};
+    color: ${colors.white};
+
+    &:hover {
+      background: ${colors.white};
+      color: ${colors.important};
+    }
+  }
 `;
 
 const GOOGLE_FORM_NAME_ID = 'entry.1795367464'
@@ -125,113 +145,107 @@ class Rsvp extends Component {
     }
 
     return (
-      <React.Fragment>
-        <Container class="container">
-          <div class="row justify-content-md-center" style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}>
-            <div class="col-md-6">
-              <FormContainer>
-                <form onSubmit={this.handleSubmit} disabled={this.state.sendingMessage}>
-                  <div className='form-group row'>
-                    <label htmlFor='email' className='col-sm-2 col-form-label'>
-                      Nume:
-              </label>
-                    <div className='col-sm-8'>
-                      <input
-                        type='text'
-                        name='name'
-                        id='name'
-                        className='form-control'
-                        value={this.state.name}
-                        onChange={this.handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className='form-group row'>
-                    <div className='col-sm-4'>
-                      <input
-                        type='radio'
-                        name='present'
-                        id='present'
-                        className='form-control'
-                        checked={this.state.present}
-                        onChange={this.handleChange}
-                      />
-                      <label htmlFor='present' className='col-form-label'>
-                        Da, voi veni!
-                      </label>
-                    </div>
-                    <div className='col-sm-4'>
-                      <input
-                        type='radio'
-                        name='notPresent'
-                        id='notPresent'
-                        className='form-control'
-                        checked={this.state.notPresent}
-                        onChange={this.handleChange}
-                      />
-                      <label htmlFor='notPresent' className='col-form-label'>
-                        Nu, voi veni la urmatoarea!
-                      </label>
-                    </div>
-                  </div>
-                  {this.state.present && (
-                    <React.Fragment>
-                      <div className='form-group row'>
-                        <label htmlFor='email' className='col-sm-2 col-form-label'>
-                          Email:
-                  </label>
-                        <div className='col-sm-8'>
-                          <input
-                            type='email'
-                            name='email'
-                            id='email'
-                            className='form-control'
-                            value={this.state.email}
-                            onChange={this.handleChange}
-                          />
-                        </div>
-                      </div>
-                      <div className='form-group row'>
-                        <label htmlFor='email' className='col-sm-2 col-form-label'>
-                          Tel.:
-                  </label>
-                        <div className='col-sm-8'>
-                          <input
-                            type='phone'
-                            name='phone'
-                            id='phone'
-                            className='form-control'
-                            value={this.state.phone}
-                            onChange={this.handleChange}
-                          />
-                        </div>
-                      </div>
-                      <div className='form-group row'>
-                        <label htmlFor='message' className='col-sm-2 col-form-label'>
-                          Mesaj:
-                        </label>
-                        <div className='col-sm-8'>
-                          <textarea
-                            id='message'
-                            name='message'
-                            className='form-control'
-                            value={this.state.message}
-                            onChange={this.handleChange}
-                            rows='6'
-                          />
-                        </div>
-                      </div>
-                    </React.Fragment>)}
-                  <div>
-                    <button type='submit' className='btn btn-sm btn-default btn-action'>Trimite</button>
-                  </div>
-                </form>
-              </FormContainer>
+      <Section className="row d-flex justify-content-center">
+        <div className="col-md-6">
+          <form onSubmit={this.handleSubmit} disabled={this.state.sendingMessage}>
+            <div className='form-group row'>
+              <label htmlFor='email' className='col-sm-2 col-form-label'>
+                Nume:
+                </label>
+              <div className='col-sm-8'>
+                <input
+                  type='text'
+                  name='name'
+                  id='name'
+                  className='form-control'
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
             </div>
-          </div>
-        </Container>
-      </React.Fragment >
+            <div className='form-group row'>
+              <div className='col-sm-4'>
+                <input
+                  type='radio'
+                  name='present'
+                  id='present'
+                  className='form-control'
+                  checked={this.state.present}
+                  onChange={this.handleChange}
+                />
+                <label htmlFor='present' className='col-form-label'>
+                  Da, voi veni!
+                      </label>
+              </div>
+              <div className='col-sm-4'>
+                <input
+                  type='radio'
+                  name='notPresent'
+                  id='notPresent'
+                  className='form-control'
+                  checked={this.state.notPresent}
+                  onChange={this.handleChange}
+                />
+                <label htmlFor='notPresent' className='col-form-label'>
+                  Nu, voi veni la urmatoarea!
+                      </label>
+              </div>
+            </div>
+            {this.state.present && (
+              <React.Fragment>
+                <div className='form-group row'>
+                  <label htmlFor='email' className='col-sm-2 col-form-label'>
+                    Email:
+                  </label>
+                  <div className='col-sm-8'>
+                    <input
+                      type='email'
+                      name='email'
+                      id='email'
+                      className='form-control'
+                      value={this.state.email}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                </div>
+                <div className='form-group row'>
+                  <label htmlFor='email' className='col-sm-2 col-form-label'>
+                    Tel.:
+                  </label>
+                  <div className='col-sm-8'>
+                    <input
+                      type='phone'
+                      name='phone'
+                      id='phone'
+                      className='form-control'
+                      value={this.state.phone}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                </div>
+                <div className='form-group row'>
+                  <label htmlFor='message' className='col-sm-2 col-form-label'>
+                    Mesaj:
+                        </label>
+                  <div className='col-sm-8'>
+                    <textarea
+                      id='message'
+                      name='message'
+                      className='form-control'
+                      value={this.state.message}
+                      onChange={this.handleChange}
+                      rows='6'
+                    />
+                  </div>
+                </div>
+              </React.Fragment>)}
+            <div>
+              <button type='submit' className='btn btn-sm btn-default btn-action rsvp-button'>Trimite</button>
+            </div>
+          </form>
+        </div>
+      </Section >
     )
   }
 }

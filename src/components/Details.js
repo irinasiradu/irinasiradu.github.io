@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import styled from "styled-components";
 
@@ -71,20 +71,6 @@ const Section = styled.section`
   }
 `;
 
-const CeremonyTitle = () => {
-  return (
-    <div style={{ display: "block", textAlign: "right" }}>
-      <span className="important">Cununia religioasa</span> va avea loc la ora <span className="important">17:00</span> pe pajiștea de lângă lac.
-    </div>);
-}
-
-const PartyTitle = () => {
-  return (
-    <Fragment>
-      <span className="important">Petrecerea</span> va continua pe terasa de la piscină începând cu ora <span className="important">18:00</span>.
-    </Fragment>);
-}
-
 const TimelineItem = ({ title, imageUrl }) => {
   return (
     <div className="col-md-6 col-sm-12 card-root">
@@ -100,19 +86,19 @@ const TimelineItem = ({ title, imageUrl }) => {
   )
 }
 
-const Details = () => {
+const Details = ({ localization }) => {
   return (
     <Section id="details">
       <div className="box">
-        <div className="title">Va așteptăm cu drag</div>
+        <div className="title">{localization.detailsTitle}</div>
         <div className="row">
           <TimelineItem
-            title={<CeremonyTitle />}
+            title={localization.ceremonyTitle}
             imageUrl={img1}
           />
           <TimelineItem
             inverted
-            title={<PartyTitle />}
+            title={localization.partyTitle}
             imageUrl={img2}
           />
         </div>

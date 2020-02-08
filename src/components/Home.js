@@ -104,7 +104,7 @@ const Section = styled.section`
   }
 `;
 
-const Home = () => {
+const Home = ({ localization }) => {
   return (
     <Section id="home">
       <div className="box">
@@ -118,12 +118,14 @@ const Home = () => {
           data-aos-easing="ease"
           data-aos-delay="400"
         >
-          <span className="date">18 Iulie, 2020</span>
+          <span className="date">
+            {localization.homeDate}
+          </span>
           <br />
           <span className="other">
             <a href="https://www.google.com/maps/place/Piscina+Phoenix+Cernica/@44.4345628,26.2413371,17z/data=!3m1!4b1!4m5!3m4!1s0x40b1fba2a583b05f:0x4afbbc6bd59729d5!8m2!3d44.434559!4d26.2435258">Pheonix Cernica</a>, Pantelimon, IF, Romania
             <br />
-            Au mai ramas <b>{moment("2020-07-18").diff(moment(), "day")}</b> zile
+            {localization.daysLeft(moment("2020-07-18").diff(moment(), "day"))}
           </span>
         </div>
       </div>

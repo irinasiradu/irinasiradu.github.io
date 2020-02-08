@@ -126,21 +126,16 @@ class Rsvp extends Component {
   }
 
   render() {
+    const { localization } = this.props;
     if (this.state.messageSent) {
       return (
-        <div className='success-message'>Va multumim pentru raspuns!</div>
+        <div className='success-message'>{localization.thankYou}</div>
       )
     }
 
     if (this.state.messageError) {
       return (
-        <div className='error-message'>Ne pare rau. A aparut o eroare. Va rugam contactati-ne la 0724 933 644</div>
-      )
-    }
-
-    if (this.state.showForm === false) {
-      return (
-        <button id='contact-button' className='btn btn-sm' onClick={this.handleFormToggle}>Contact</button>
+        <div className='error-message'>{localization.submitError}</div>
       )
     }
 
@@ -150,7 +145,7 @@ class Rsvp extends Component {
           <form onSubmit={this.handleSubmit} disabled={this.state.sendingMessage}>
             <div className='form-group row'>
               <label htmlFor='email' className='col-sm-2 col-form-label'>
-                Nume:
+                {localization.nameLabel}:
                 </label>
               <div className='col-sm-8'>
                 <input
@@ -175,8 +170,8 @@ class Rsvp extends Component {
                   onChange={this.handleChange}
                 />
                 <label htmlFor='present' className='col-form-label'>
-                  Da, voi veni!
-                      </label>
+                  {localization.confirmAction}
+                </label>
               </div>
               <div className='col-sm-4'>
                 <input
@@ -188,15 +183,15 @@ class Rsvp extends Component {
                   onChange={this.handleChange}
                 />
                 <label htmlFor='notPresent' className='col-form-label'>
-                  Nu, voi veni la urmatoarea!
-                      </label>
+                  {localization.rejectAction}
+                </label>
               </div>
             </div>
             {this.state.present && (
               <React.Fragment>
                 <div className='form-group row'>
                   <label htmlFor='email' className='col-sm-2 col-form-label'>
-                    Email:
+                    {localization.emailLabel}:
                   </label>
                   <div className='col-sm-8'>
                     <input
@@ -210,8 +205,8 @@ class Rsvp extends Component {
                   </div>
                 </div>
                 <div className='form-group row'>
-                  <label htmlFor='email' className='col-sm-2 col-form-label'>
-                    Tel.:
+                  <label htmlFor='phone' className='col-sm-2 col-form-label'>
+                    {localization.phoneLabel}:
                   </label>
                   <div className='col-sm-8'>
                     <input
@@ -226,7 +221,7 @@ class Rsvp extends Component {
                 </div>
                 <div className='form-group row'>
                   <label htmlFor='message' className='col-sm-2 col-form-label'>
-                    Mesaj:
+                    {localization.messageLabel}:
                         </label>
                   <div className='col-sm-8'>
                     <textarea
@@ -241,7 +236,7 @@ class Rsvp extends Component {
                 </div>
               </React.Fragment>)}
             <div>
-              <button type='submit' className='btn btn-sm btn-default btn-action rsvp-button'>Trimite</button>
+              <button type='submit' className='btn btn-sm btn-default btn-action rsvp-button'>{localization.submitButton}</button>
             </div>
           </form>
         </div>

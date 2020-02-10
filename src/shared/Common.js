@@ -33,6 +33,13 @@ export const localizations = {
         confirmAction: "Da, voi veni!",
         rejectAction: "Nu, voi veni la urmatoarea!",
         submitButton: "Trimite răspuns",
+        messagePlaceholder: "Mesaj",
+        otherAttendeesPlaceholder: "Insoțitori",
+        accommodationLabel: "Am nevoie de cazare",
+        transportLabel: "Am nevoie de transport",
+        noPresentLabel: "Nu pot participa, dar vin la urmatoarea.",
+        yesPresentLabel: "Haida!",
+        namePlaceholder: "Nume"
     },
     "fr": {
         homeDate: "18 juillet 2020",
@@ -55,5 +62,12 @@ export const localizations = {
         confirmAction: "Da, voi veni!",
         rejectAction: "Nu, voi veni la urmatoarea!",
         submitButton: "Trimite răspuns",
+        messagePlaceholder: "Mesaj",
+        otherAttendeesPlaceholder: "Insoțitori",
+        accommodationLabel: "Am nevoie de cazare",
+        transportLabel: "Am nevoie de transport",
+        noPresentLabel: "Nu pot participa, dar vin la urmatoarea.",
+        yesPresentLabel: "Haida!",
+        namePlaceholder: "Nume"
     }
 }

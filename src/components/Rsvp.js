@@ -4,6 +4,23 @@ import styled from "styled-components";
 import axios from 'axios';
 
 import { style, colors } from "../shared/Common.js"
+import { Form, Col, Row } from 'react-bootstrap';
+import Collapse from "react-collapse";
+import Confetti from 'react-dom-confetti';
+
+const sharedInputStyle = `
+  width: 100%;
+  padding-left: 0.8em;
+  font-size: 21px;
+  color: ${colors.grey};
+  border: 1px solid ${colors.grey};
+  border-radius: 8px;
+  
+  &:focus {
+    outline: none !important;
+    box-shadow: 0 0 5px ${colors.grey};
+
+  }`
 
 const Section = styled.div`
   padding-top: 2%;
@@ -17,6 +34,7 @@ const Section = styled.div`
   font-family: ${style.fontFamily};
   overflow: hidden;
   align-items: normal;
+  min-height: 75vh;
 
   .title {
     text-align: center;
@@ -33,10 +51,64 @@ const Section = styled.div`
     border: solid 2px ${colors.important};
     color: ${colors.white};
 
-    &:hover {
+    &:hover:enabled {
       background: ${colors.white};
       color: ${colors.important};
     }
+  }
+
+  .form-row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  input {
+    ${sharedInputStyle}
+  }
+
+  textarea {
+    ${sharedInputStyle}
+  }
+
+  input[type=text] {
+    height: 2em;
+  }
+
+  .form-check {
+    text-align: center;
+  }
+
+  input[type=checkbox]:focus, input[type=radio]:focus {
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  input[type=checkbox]:hover, input[type=radio]:hover {
+    cursor: pointer;
+  }
+  
+  .custom-control-input:checked~.custom-control-label::before {
+    color: ${colors.white};
+    border-color: ${colors.lightGrey};
+    background-color: ${colors.important};
+  }
+
+  .custom-control-input:focus:not(:checked)~.custom-control-label::before {
+    border-color: ${colors.lightGrey};
+  }
+
+  #confetti {
+    position: fixed;
+    bottom: 2em;
+    left: 2em;
+  }
+
+  .success-message {
+    text-align: center;
+    font-size: 21px;
+    color: ${colors.important};
   }
 `;
 
@@ -53,12 +125,10 @@ class Rsvp extends Component {
     super(props)
     this.state = {
       name: '',
-      present: false,
-      notPresent: false,
-      email: '',
-      phone: '',
+      present: true,
       transport: false,
       accommodation: false,
+      otherAttendees: "",
       message: '',
       sendingMessage: false,
       messageSent: false,
@@ -69,21 +139,25 @@ class Rsvp extends Component {
   handleChange = (event) => {
     if (event.target.name === 'present') {
       this.setState({
-        present: event.target.checked,
-        notPresent: !event.target.checked
+        present: event.target.checked
       })
     } else if (event.target.name === 'notPresent') {
       this.setState({
-        present: !event.target.checked,
-        notPresent: event.target.checked
+        present: !event.target.checked
       })
+    } else if (event.target.name === 'transport') {
+      this.setState(state => ({
+        transport: !state.transport
+      }))
+    } else if (event.target.name === 'accommodation') {
+      this.setState(state => ({
+        accommodation: !state.accommodation
+      }))
     } else {
       this.setState({
         [event.target.name]: event.target.value,
       })
     }
-
-
   }
 
   handleSubmit = (event) => {
@@ -95,151 +169,167 @@ class Rsvp extends Component {
   }
 
   sendMessage = () => {
-    const formData = new FormData()
-    formData.append(GOOGLE_FORM_MESSAGE_ID, this.state.message)
-    formData.append(GOOGLE_FORM_EMAIL_ID, this.state.email)
-    formData.append(GOOGLE_FORM_NAME_ID, this.state.name)
-    formData.append(GOOGLE_FORM_PRESENT_ID, (this.state.present ? 'Present' : ''))
-    formData.append(GOOGLE_FORM_PHONE_ID, this.state.phone)
+    console.log(JSON.stringify(this.state));
+    this.setState({ messageSent: true });
+    // const formData = new FormData()
+    // formData.append(GOOGLE_FORM_MESSAGE_ID, this.state.message)
+    // formData.append(GOOGLE_FORM_EMAIL_ID, this.state.email)
+    // formData.append(GOOGLE_FORM_NAME_ID, this.state.name)
+    // formData.append(GOOGLE_FORM_PRESENT_ID, (this.state.present ? 'Present' : ''))
+    // formData.append(GOOGLE_FORM_PHONE_ID, this.state.phone)
 
-    axios.post(CORS_PROXY + GOOGLE_FORM_ACTION, formData)
-      .then(() => {
-        this.setState({
-          name: '',
-          present: false,
-          notPresent: false,
-          email: '',
-          phone: '',
-          transport: false,
-          accommodation: false,
-          message: '',
-          sendingMessage: false,
-          messageSent: true,
-          messageError: false
-        })
-      }).catch(() => {
-        this.setState({
-          messageError: true,
-          sendingMessage: false
-        })
-      })
+    // axios.post(CORS_PROXY + GOOGLE_FORM_ACTION, formData)
+    //   .then(() => {
+    //     this.setState({
+    //       name: '',
+    //       present: false,
+    //       notPresent: false,
+    //       email: '',
+    //       phone: '',
+    //       transport: false,
+    //       accommodation: false,
+    //       message: '',
+    //       sendingMessage: false,
+    //       messageSent: true,
+    //       messageError: false
+    //     })
+    //   }).catch(() => {
+    //     this.setState({
+    //       messageError: true,
+    //       sendingMessage: false
+    //     })
+    //   })
   }
 
   render() {
     const { localization } = this.props;
-    if (this.state.messageSent) {
-      return (
-        <div className='success-message'>{localization.thankYou}</div>
-      )
-    }
-
-    if (this.state.messageError) {
-      return (
-        <div className='error-message'>{localization.submitError}</div>
-      )
-    }
+    const disabled = this.state.sendingMessage || this.state.messageSent || this.state.messageError;
+    const config = {
+      angle: 45,
+      spread: 45,
+      startVelocity: 45,
+      elementCount: 50,
+      dragFriction: 0.1,
+      duration: 3000,
+      stagger: 0,
+      width: "10px",
+      height: "10px",
+      colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
+    };
 
     return (
       <Section className="row d-flex justify-content-center">
         <div className="col-md-6">
-          <form onSubmit={this.handleSubmit} disabled={this.state.sendingMessage}>
-            <div className='form-group row'>
-              <label htmlFor='email' className='col-sm-2 col-form-label'>
-                {localization.nameLabel}:
-                </label>
-              <div className='col-sm-8'>
-                <input
-                  type='text'
-                  name='name'
-                  id='name'
-                  className='form-control'
+          <Form onSubmit={this.handleSubmit}>
+            <React.Fragment>
+              <Row className="form-row">
+                <Form.Control
+                  type="text"
+                  placeholder={localization.namePlaceholder}
                   value={this.state.name}
                   onChange={this.handleChange}
-                  required
+                  name="name"
+                  id="name"
+                  disabled={disabled}
                 />
-              </div>
-            </div>
-            <div className='form-group row'>
-              <div className='col-sm-4'>
-                <input
-                  type='radio'
-                  name='present'
-                  id='present'
-                  className='form-control'
-                  checked={this.state.present}
-                  onChange={this.handleChange}
-                />
-                <label htmlFor='present' className='col-form-label'>
-                  {localization.confirmAction}
-                </label>
-              </div>
-              <div className='col-sm-4'>
-                <input
-                  type='radio'
-                  name='notPresent'
-                  id='notPresent'
-                  className='form-control'
-                  checked={this.state.notPresent}
-                  onChange={this.handleChange}
-                />
-                <label htmlFor='notPresent' className='col-form-label'>
-                  {localization.rejectAction}
-                </label>
-              </div>
-            </div>
-            {this.state.present && (
-              <React.Fragment>
-                <div className='form-group row'>
-                  <label htmlFor='email' className='col-sm-2 col-form-label'>
-                    {localization.emailLabel}:
-                  </label>
-                  <div className='col-sm-8'>
-                    <input
-                      type='email'
-                      name='email'
-                      id='email'
-                      className='form-control'
-                      value={this.state.email}
+              </Row>
+              <fieldset>
+                <Form.Group as={Row} className="form-row">
+                  <Col sm={6}>
+                    <Form.Check
+                      type="radio"
+                      custom
+                      label={localization.yesPresentLabel}
+                      name='present'
+                      id='present'
+                      checked={this.state.present}
                       onChange={this.handleChange}
+                      disabled={disabled}
                     />
-                  </div>
-                </div>
-                <div className='form-group row'>
-                  <label htmlFor='phone' className='col-sm-2 col-form-label'>
-                    {localization.phoneLabel}:
-                  </label>
-                  <div className='col-sm-8'>
-                    <input
-                      type='phone'
-                      name='phone'
-                      id='phone'
-                      className='form-control'
-                      value={this.state.phone}
+                  </Col>
+                  <Col sm={6}>
+                    <Form.Check
+                      type="radio"
+                      custom
+                      label={localization.noPresentLabel}
+                      name='notPresent'
+                      id='notPresent'
+                      checked={!this.state.present}
                       onChange={this.handleChange}
+                      disabled={disabled}
                     />
-                  </div>
-                </div>
-                <div className='form-group row'>
-                  <label htmlFor='message' className='col-sm-2 col-form-label'>
-                    {localization.messageLabel}:
-                        </label>
-                  <div className='col-sm-8'>
-                    <textarea
-                      id='message'
-                      name='message'
-                      className='form-control'
-                      value={this.state.message}
+                  </Col>
+                </Form.Group>
+              </fieldset>
+              <Collapse isOpened={this.state.present}>
+                <Row className="form-row" >
+                  <Col sm={6}>
+                    <Form.Check
+                      type="checkbox"
+                      custom
+                      label={localization.transportLabel}
+                      name='transport'
+                      id='transport'
+                      checked={this.state.transport}
                       onChange={this.handleChange}
-                      rows='6'
+                      disabled={disabled}
                     />
-                  </div>
-                </div>
-              </React.Fragment>)}
-            <div>
-              <button type='submit' className='btn btn-sm btn-default btn-action rsvp-button'>{localization.submitButton}</button>
+                  </Col>
+                  <Col sm={6}>
+                    <Form.Check
+                      type="checkbox"
+                      custom
+                      label={localization.accommodationLabel}
+                      name='accommodation'
+                      id='accommodation'
+                      checked={this.state.accommodation}
+                      onChange={this.handleChange}
+                      disabled={disabled}
+                    />
+                  </Col>
+                </Row>
+                <Row className="form-row">
+                  <Form.Control
+                    type="text"
+                    placeholder={localization.otherAttendeesPlaceholder}
+                    value={this.state.otherAttendees}
+                    onChange={this.handleChange}
+                    name="otherAttendees"
+                    id="otherAttendees"
+                    disabled={disabled}
+                  />
+                </Row>
+                <Row className="form-row">
+                  <Form.Control
+                    as="textarea"
+                    rows="4"
+                    placeholder={localization.messagePlaceholder}
+                    value={this.state.message}
+                    onChange={this.handleChange}
+                    name="message"
+                    id="message"
+                    disabled={disabled}
+                  />
+                </Row>
+              </Collapse>
+            </React.Fragment>
+            <div style={{ textAlign: "center" }}>
+              <button type='submit' className='btn btn-sm btn-default btn-action rsvp-button' disabled={disabled}>
+                <Confetti id="confetti" active={this.state.messageSent && this.state.present} config={config} />
+                {localization.submitButton}
+              </button>
             </div>
-          </form>
+          </Form>
         </div>
+
+        {this.state.messageSent && (
+          <div className='col-md-12 success-message'>{localization.thankYou}
+          </div>
+        )}
+
+        {!this.state.messageSent && this.state.messageError && (
+          <div className='col-md-12 error-message'>{localization.submitError}</div>)}
+
       </Section >
     )
   }

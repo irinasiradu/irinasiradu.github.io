@@ -5,6 +5,7 @@ import moment from "moment"
 
 import { style, colors } from "../shared/Common.js"
 import bgImg from "../assets/img/DSC_0432.JPG";
+import TreeSvg from "../assets/img/tree.svg";
 
 const Section = styled.section`
   padding-right: 0px;
@@ -102,12 +103,28 @@ const Section = styled.section`
     cursor: pointer;
     border-bottom: 1px solid ${colors.important};
   }
+
+  .tree-container {
+    vertical-align: bottom;
+    display: table-cell;
+
+    & img {
+      vertical-align: bottom
+    }
+  }
+
+  .tree { 
+    height: 250px;
+    width: auto;
+    position: relative;
+  }
 `;
 
 const Home = ({ localization }) => {
   return (
     <Section id="home">
       <div className="box">
+        <div className="tree-container"><img src={TreeSvg} alt="" className="tree" /></div>
         <ul data-aos="zoom-in" className="title">
           <li>Irina</li>
           <li className="circle">&amp;</li>

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { style, colors } from "../shared/Common.js"
 import { Form, Col, Row } from 'react-bootstrap';
 import Collapse from "react-collapse";
-import Confetti from 'react-dom-confetti';
+import Confetti from './Confetti.js';
 
 const sharedInputStyle = `
   width: 100%;
@@ -60,6 +60,10 @@ const Section = styled.div`
   .form-row {
     padding-top: 10px;
     padding-bottom: 10px;
+    @media (max-width: 767px) {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
   }
 
   input {
@@ -99,15 +103,20 @@ const Section = styled.div`
     border-color: ${colors.lightGrey};
   }
 
-  #confetti {
-    position: fixed;
-    bottom: 2em;
-    left: 2em;
-  }
-
   .success-message {
     text-align: center;
     font-size: 21px;
+    color: ${colors.important};
+  }
+
+  .title {
+    font-size: 30px;
+    @media (max-width: 767px) {
+      font-size: 20px;
+    }
+  }
+  
+  .important {
     color: ${colors.important};
   }
 `;
@@ -204,21 +213,13 @@ class Rsvp extends Component {
   render() {
     const { localization } = this.props;
     const disabled = this.state.sendingMessage || this.state.messageSent || this.state.messageError;
-    const config = {
-      angle: 45,
-      spread: 45,
-      startVelocity: 45,
-      elementCount: 50,
-      dragFriction: 0.1,
-      duration: 3000,
-      stagger: 0,
-      width: "10px",
-      height: "10px",
-      colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
-    };
+
 
     return (
       <Section className="row d-flex justify-content-center">
+        <div className="col-md-12 title">
+          {localization.rsvpTitle}
+        </div>
         <div className="col-md-6">
           <Form onSubmit={this.handleSubmit}>
             <React.Fragment>
@@ -314,8 +315,8 @@ class Rsvp extends Component {
               </Collapse>
             </React.Fragment>
             <div style={{ textAlign: "center" }}>
-              <button type='submit' className='btn btn-sm btn-default btn-action rsvp-button' disabled={disabled}>
-                <Confetti id="confetti" active={this.state.messageSent && this.state.present} config={config} />
+              <button type='submit' id="salut gabone" className='btn btn-sm btn-default btn-action rsvp-button' disabled={disabled}>
+                <Confetti active={this.state.messageSent && this.state.present} />
                 {localization.submitButton}
               </button>
             </div>

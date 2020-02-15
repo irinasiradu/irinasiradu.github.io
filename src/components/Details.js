@@ -2,8 +2,8 @@ import React from "react";
 
 import styled from "styled-components";
 
-import img1 from "../assets/img/Pisicina-Phoenix-Cernica-007.jpg";
-import img2 from "../assets/img/Pisicina-Phoenix-Cernica-005.jpg";
+import img1 from "../assets/img/Pisicina-Phoenix-Cernica-008.jpg";
+import img2 from "../assets/img/Pisicina-Phoenix-Cernica-007.jpg";
 
 import { style, colors } from "../shared/Common.js"
 
@@ -53,7 +53,7 @@ const Section = styled.section`
 
   .card-image {
     display: block;
-    max-width: 100%;
+    width: 100%;
     height: auto;
   }
   
@@ -68,6 +68,13 @@ const Section = styled.section`
   .card-root {
     margin-top:5%;
     margin-bottom:5%;
+  }
+
+  .util {
+    font-size: 20px;
+    @media (max-width: 767px) {
+      font-size: 16px;
+    }
   }
 `;
 
@@ -101,6 +108,18 @@ const Details = ({ localization }) => {
             title={localization.partyTitle}
             imageUrl={img2}
           />
+        </div>
+        <div className="row util">
+          <div className="col-md-12">
+            {localization.helpfulTitle}
+            <ul>
+              <li>{localization.helpfulOutside}</li>
+              <li>{localization.helpfulByDay}</li>
+              <li>{localization.helpfulTransport}</li>
+              {localization.helpfulAccommodation && (<li>{localization.helpfulAccommodation}</li>)}
+              <li>{localization.helpfulContact}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </Section >

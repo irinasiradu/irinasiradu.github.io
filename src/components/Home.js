@@ -4,8 +4,8 @@ import styled from "styled-components";
 import moment from "moment"
 
 import { style, colors } from "../shared/Common.js"
-import bgImg from "../assets/img/DSC_0432.JPG";
-import TreeSvg from "../assets/img/tree.svg";
+import bgImg from "../assets/img/cover2.jpg";
+// import TreeSvg from "../assets/img/tree.svg";
 
 const Section = styled.section`
   padding-right: 0px;
@@ -15,11 +15,11 @@ const Section = styled.section`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: relative;
   background-image: url(${bgImg});
   color: ${colors.grey};
   font-family: ${style.fontFamily};
-  
+
   text-align: center;
 
   height: 800px;
@@ -29,9 +29,9 @@ const Section = styled.section`
 
   & .box {
     background-color: ${colors.lightGrey};
-    opacity: 0.9; 
+    opacity: 0.7; 
     height: 100%;
-    padding-top: 6%;
+    padding-top: 5%;
     padding-bottom: 25%;
   }
 
@@ -124,12 +124,14 @@ const Home = ({ localization }) => {
   return (
     <Section id="home">
       <div className="box">
-        <div className="tree-container"><img src={TreeSvg} alt="" className="tree" /></div>
-        <ul data-aos="zoom-in" className="title">
-          <li>Irina</li>
-          <li className="circle">&amp;</li>
-          <li>Radu</li>
-        </ul>
+        {/* <div className="tree-container"><img src={TreeSvg} alt="" className="tree" /></div> */}
+        <a href="#" data-toggle="tooltip" title="In sfarsit!">
+          <ul data-aos="zoom-in" className="title">
+            <li>Irina</li>
+            <li className="circle">&amp;</li>
+            <li>Radu</li>
+          </ul>
+        </a>
         <div
           data-aos="fade-up"
           data-aos-easing="ease"

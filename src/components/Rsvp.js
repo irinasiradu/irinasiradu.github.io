@@ -149,7 +149,8 @@ class Rsvp extends Component {
       messageSent: false,
       messageError: false,
       nameRequiredError: false,
-      formTouched: false
+      formTouched: false,
+      showConfetti: false
     }
   }
 
@@ -194,7 +195,10 @@ class Rsvp extends Component {
   }
 
   sendMessage = () => {
-    this.setState({ sendingMessage: true });
+    this.setState(state => ({
+      sendingMessage: true,
+      showConfetti: state.present
+    }));
     const formData = new FormData()
     formData.append(GOOGLE_FORM_MESSAGE_ID, this.state.message)
     formData.append(GOOGLE_FORM_NAME_ID, this.state.name)
@@ -337,7 +341,7 @@ class Rsvp extends Component {
             </React.Fragment>
             <div style={{ textAlign: "center" }}>
               <button type='submit' id="salut gabone" className='btn btn-sm btn-default btn-action rsvp-button' disabled={formDisabled || this.state.nameRequiredError || !this.state.formTouched}>
-                <Confetti active={this.state.messageSent && this.state.present} />
+                <Confetti active={this.state.showConfetti} />
                 {localization.submitButton}
               </button>
             </div>

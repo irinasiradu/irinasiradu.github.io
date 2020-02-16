@@ -2,10 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 
-import img1 from "../assets/img/Pisicina-Phoenix-Cernica-008.jpg";
-import img2 from "../assets/img/Pisicina-Phoenix-Cernica-007.jpg";
-
-import { style, colors } from "../shared/Common.js"
+import { style, colors, images } from "../shared/Common.js"
 
 const Section = styled.section`
   padding-top: 2%;
@@ -101,12 +98,12 @@ const Details = ({ localization }) => {
         <div className="row">
           <TimelineItem
             title={localization.ceremonyTitle}
-            imageUrl={img1}
+            imageUrl={images.img1}
           />
           <TimelineItem
             inverted
             title={localization.partyTitle}
-            imageUrl={img2}
+            imageUrl={images.img2}
           />
         </div>
         <div className="row util">

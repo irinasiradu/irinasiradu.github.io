@@ -1,4 +1,7 @@
 import React, { Fragment } from "react"
+import cover2 from "../assets/img/cover2.jpg";
+import img1 from "../assets/img/Pisicina-Phoenix-Cernica-008.jpg";
+import img2 from "../assets/img/Pisicina-Phoenix-Cernica-007.jpg";
 
 export const style = {
     fontFamily: "'Oswald', Verdana, Geneva, sans-serif",
@@ -97,4 +100,10 @@ export const localizations = {
         helpfulContact: "Pentru felicitări 0724 933 644 (Radu). Pentru reclamații 0723 025 398 (Irina).",
         helpfulAccommodation: "",
     }
+}
+
+export const images = {
+    bgImg: process.env.environment === "Development" ? cover2 : "https://raw.githubusercontent.com/irinasiradu/irinasiradu.github.io/master/src/assets/img/cover2.jpg",
+    img1: process.env.environment === "Development" ? img1 : "https://raw.githubusercontent.com/irinasiradu/irinasiradu.github.io/master/src/assets/img/Pisicina-Phoenix-Cernica-008.jpg",
+    img2: process.env.environment === "Development" ? img2 : "https://raw.githubusercontent.com/irinasiradu/irinasiradu.github.io/master/src/assets/img/Pisicina-Phoenix-Cernica-007.jpg",
 }

@@ -3,10 +3,8 @@ import React from "react";
 import styled from "styled-components";
 import moment from "moment"
 
-import { style, colors } from "../shared/Common.js"
-import bgImg from "../assets/img/cover2.jpg";
+import { style, colors, images } from "../shared/Common.js"
 import SimpleTooltip from "./SimpleTooltip.js";
-// import TreeSvg from "../assets/img/tree.svg";
 
 const Section = styled.section`
   padding-right: 0px;
@@ -17,7 +15,7 @@ const Section = styled.section`
   background-size: cover;
   background-position: center;
   background-attachment: relative;
-  background-image: url(${bgImg});
+  background-image: url(${images.bgImg});
   color: ${colors.grey};
   font-family: ${style.fontFamily};
 

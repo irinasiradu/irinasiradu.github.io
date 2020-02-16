@@ -9,6 +9,7 @@ export const colors = {
     lightGrey: "#f4f4f4",
     white: "#fff",
     important: "salmon",
+    warning: "#ff5042"
 }
 
 export const localizations = {
@@ -29,6 +30,7 @@ export const localizations = {
             Vă rugăm sa ne confirmați prezența înainte de <span className="important">1 iunie</span>
         </Fragment>,
         rsvpTooltip: "Ca să n-avem scandal.",
+        homeTooltip: "În sfârșit!",
         submitError: "Ne pare rău. A apărut o eroare. Vă rugăm contactați-ne la 0724 933 644.",
         nameLabel: "Nume",
         phoneLabel: "Tel.",

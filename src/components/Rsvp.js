@@ -7,6 +7,7 @@ import { style, colors } from "../shared/Common.js"
 import { Form, Col, Row } from 'react-bootstrap';
 import Collapse from "react-collapse";
 import Confetti from './Confetti.js';
+import SimpleTooltip from './SimpleTooltip.js';
 
 const sharedInputStyle = `
   width: 100%;
@@ -19,8 +20,12 @@ const sharedInputStyle = `
   &:focus {
     outline: none !important;
     box-shadow: 0 0 5px ${colors.grey};
-
-  }`
+  }
+  
+  &.input-error {
+    border: 2px solid ${colors.warning};
+  }
+  `
 
 const Section = styled.div`
   padding-top: 2%;
@@ -34,7 +39,7 @@ const Section = styled.div`
   font-family: ${style.fontFamily};
   overflow: hidden;
   align-items: normal;
-  min-height: 75vh;
+  //min-height: 75vh;
 
   .title {
     text-align: center;
@@ -103,7 +108,7 @@ const Section = styled.div`
     border-color: ${colors.lightGrey};
   }
 
-  .success-message {
+  .result-message {
     text-align: center;
     font-size: 21px;
     color: ${colors.important};
@@ -121,13 +126,14 @@ const Section = styled.div`
   }
 `;
 
-const GOOGLE_FORM_NAME_ID = 'entry.1795367464'
-const GOOGLE_FORM_PRESENT_ID = 'entry.2140823696'
-const GOOGLE_FORM_EMAIL_ID = 'entry.185174987'
-const GOOGLE_FORM_PHONE_ID = 'entry.543897934'
-const GOOGLE_FORM_MESSAGE_ID = 'entry.543897934'
+const GOOGLE_FORM_NAME_ID = 'entry.1387862132'
+const GOOGLE_FORM_PRESENT_ID = 'entry.845407748'
+const GOOGLE_FORM_ACCOMMODATION_ID = 'entry.43798889'
+const GOOGLE_FORM_TRANSPORT_ID = 'entry.1298124710'
+const GOOGLE_FORM_MESSAGE_ID = 'entry.1485462238'
+const GOOGLE_FORM_ATTENDANTS_ID = 'entry.1550750435'
 const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/'
-const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScDq1t-GydjtoEoWMurdvacRDDmwc8p9-2J6LrD3wWuIOdKJw/formResponse'
+const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScbLhlPuAsvFJZMGjoTecRRmO-jneDNitYl0enfhNg9L5bh5g/formResponse'
 
 class Rsvp extends Component {
   constructor(props) {
@@ -141,7 +147,9 @@ class Rsvp extends Component {
       message: '',
       sendingMessage: false,
       messageSent: false,
-      messageError: false
+      messageError: false,
+      nameRequiredError: false,
+      formTouched: false
     }
   }
 
@@ -149,24 +157,32 @@ class Rsvp extends Component {
     if (event.target.name === 'present') {
       this.setState({
         present: event.target.checked
-      })
+      }, this.validate)
     } else if (event.target.name === 'notPresent') {
       this.setState({
         present: !event.target.checked
-      })
+      }, this.validate)
     } else if (event.target.name === 'transport') {
       this.setState(state => ({
         transport: !state.transport
-      }))
+      }), this.validate)
     } else if (event.target.name === 'accommodation') {
       this.setState(state => ({
         accommodation: !state.accommodation
-      }))
+      }), this.validate)
     } else {
       this.setState({
         [event.target.name]: event.target.value,
-      })
+      }, this.validate)
     }
+  }
+
+  validate = () => {
+    this.setState(state => ({
+      ...state,
+      nameRequiredError: !state.name,
+      formTouched: true,
+    }));
   }
 
   handleSubmit = (event) => {
@@ -178,47 +194,48 @@ class Rsvp extends Component {
   }
 
   sendMessage = () => {
-    console.log(JSON.stringify(this.state));
-    this.setState({ messageSent: true });
-    // const formData = new FormData()
-    // formData.append(GOOGLE_FORM_MESSAGE_ID, this.state.message)
-    // formData.append(GOOGLE_FORM_EMAIL_ID, this.state.email)
-    // formData.append(GOOGLE_FORM_NAME_ID, this.state.name)
-    // formData.append(GOOGLE_FORM_PRESENT_ID, (this.state.present ? 'Present' : ''))
-    // formData.append(GOOGLE_FORM_PHONE_ID, this.state.phone)
+    this.setState({ sendingMessage: true });
+    const formData = new FormData()
+    formData.append(GOOGLE_FORM_MESSAGE_ID, this.state.message)
+    formData.append(GOOGLE_FORM_NAME_ID, this.state.name)
+    formData.append(GOOGLE_FORM_ATTENDANTS_ID, this.state.otherAttendees)
+    formData.append(GOOGLE_FORM_PRESENT_ID, (this.state.present ? 'True' : 'False'))
+    formData.append(GOOGLE_FORM_ACCOMMODATION_ID, (this.state.present && this.state.accommodation ? 'True' : 'False'))
+    formData.append(GOOGLE_FORM_TRANSPORT_ID, (this.state.present && this.state.transport ? 'True' : 'False'))
 
-    // axios.post(CORS_PROXY + GOOGLE_FORM_ACTION, formData)
-    //   .then(() => {
-    //     this.setState({
-    //       name: '',
-    //       present: false,
-    //       notPresent: false,
-    //       email: '',
-    //       phone: '',
-    //       transport: false,
-    //       accommodation: false,
-    //       message: '',
-    //       sendingMessage: false,
-    //       messageSent: true,
-    //       messageError: false
-    //     })
-    //   }).catch(() => {
-    //     this.setState({
-    //       messageError: true,
-    //       sendingMessage: false
-    //     })
-    //   })
+    axios.post(CORS_PROXY + GOOGLE_FORM_ACTION, formData)
+      .then(() => {
+        this.setState({
+          name: '',
+          present: false,
+          notPresent: false,
+          email: '',
+          phone: '',
+          transport: false,
+          accommodation: false,
+          message: '',
+          sendingMessage: false,
+          messageSent: true,
+          messageError: false
+        })
+      }).catch(() => {
+        this.setState({
+          messageError: true,
+          sendingMessage: false
+        })
+      })
   }
 
   render() {
     const { localization } = this.props;
-    const disabled = this.state.sendingMessage || this.state.messageSent || this.state.messageError;
-
+    const formDisabled = this.state.sendingMessage || this.state.messageSent || this.state.messageError;
 
     return (
       <Section className="row d-flex justify-content-center">
         <div className="col-md-12 title">
-          {localization.rsvpTitle}
+          <SimpleTooltip title={localization.rsvpTooltip}>
+            {localization.rsvpTitle}
+          </SimpleTooltip>
         </div>
         <div className="col-md-6">
           <Form onSubmit={this.handleSubmit}>
@@ -231,7 +248,9 @@ class Rsvp extends Component {
                   onChange={this.handleChange}
                   name="name"
                   id="name"
-                  disabled={disabled}
+                  disabled={formDisabled}
+                  onBlur={this.validate}
+                  className={this.state.nameRequiredError ? "input-error" : ""}
                 />
               </Row>
               <fieldset>
@@ -245,7 +264,7 @@ class Rsvp extends Component {
                       id='present'
                       checked={this.state.present}
                       onChange={this.handleChange}
-                      disabled={disabled}
+                      disabled={formDisabled}
                     />
                   </Col>
                   <Col sm={6}>
@@ -257,7 +276,7 @@ class Rsvp extends Component {
                       id='notPresent'
                       checked={!this.state.present}
                       onChange={this.handleChange}
-                      disabled={disabled}
+                      disabled={formDisabled}
                     />
                   </Col>
                 </Form.Group>
@@ -273,7 +292,7 @@ class Rsvp extends Component {
                       id='transport'
                       checked={this.state.transport}
                       onChange={this.handleChange}
-                      disabled={disabled}
+                      disabled={formDisabled}
                     />
                   </Col>
                   <Col sm={6}>
@@ -285,7 +304,7 @@ class Rsvp extends Component {
                       id='accommodation'
                       checked={this.state.accommodation}
                       onChange={this.handleChange}
-                      disabled={disabled}
+                      disabled={formDisabled}
                     />
                   </Col>
                 </Row>
@@ -297,7 +316,8 @@ class Rsvp extends Component {
                     onChange={this.handleChange}
                     name="otherAttendees"
                     id="otherAttendees"
-                    disabled={disabled}
+                    disabled={formDisabled}
+                    onBlur={this.validate}
                   />
                 </Row>
                 <Row className="form-row">
@@ -309,13 +329,14 @@ class Rsvp extends Component {
                     onChange={this.handleChange}
                     name="message"
                     id="message"
-                    disabled={disabled}
+                    disabled={formDisabled}
+                    onBlur={this.validate}
                   />
                 </Row>
               </Collapse>
             </React.Fragment>
             <div style={{ textAlign: "center" }}>
-              <button type='submit' id="salut gabone" className='btn btn-sm btn-default btn-action rsvp-button' disabled={disabled}>
+              <button type='submit' id="salut gabone" className='btn btn-sm btn-default btn-action rsvp-button' disabled={formDisabled || this.state.nameRequiredError || !this.state.formTouched}>
                 <Confetti active={this.state.messageSent && this.state.present} />
                 {localization.submitButton}
               </button>
@@ -324,12 +345,12 @@ class Rsvp extends Component {
         </div>
 
         {this.state.messageSent && (
-          <div className='col-md-12 success-message'>{localization.thankYou}
+          <div className='col-md-12 result-message'>{localization.thankYou}
           </div>
         )}
 
         {!this.state.messageSent && this.state.messageError && (
-          <div className='col-md-12 error-message'>{localization.submitError}</div>)}
+          <div className='col-md-12 result-message'>{localization.submitError}</div>)}
 
       </Section >
     )

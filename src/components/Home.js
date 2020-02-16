@@ -5,6 +5,7 @@ import moment from "moment"
 
 import { style, colors } from "../shared/Common.js"
 import bgImg from "../assets/img/cover2.jpg";
+import SimpleTooltip from "./SimpleTooltip.js";
 // import TreeSvg from "../assets/img/tree.svg";
 
 const Section = styled.section`
@@ -125,13 +126,13 @@ const Home = ({ localization }) => {
     <Section id="home">
       <div className="box">
         {/* <div className="tree-container"><img src={TreeSvg} alt="" className="tree" /></div> */}
-        <a href="#" data-toggle="tooltip" title="In sfarsit!">
+        <SimpleTooltip title={localization.homeTooltip}>
           <ul data-aos="zoom-in" className="title">
             <li>Irina</li>
             <li className="circle">&amp;</li>
             <li>Radu</li>
           </ul>
-        </a>
+        </SimpleTooltip>
         <div
           data-aos="fade-up"
           data-aos-easing="ease"

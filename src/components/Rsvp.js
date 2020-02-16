@@ -210,14 +210,6 @@ class Rsvp extends Component {
     axios.post(CORS_PROXY + GOOGLE_FORM_ACTION, formData)
       .then(() => {
         this.setState({
-          name: '',
-          present: false,
-          notPresent: false,
-          email: '',
-          phone: '',
-          transport: false,
-          accommodation: false,
-          message: '',
           sendingMessage: false,
           messageSent: true,
           messageError: false

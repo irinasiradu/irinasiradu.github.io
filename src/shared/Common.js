@@ -66,6 +66,11 @@ export const localizations = {
                 <span className="important">Petrecerea</span> va continua pe terasa de la piscină începând cu ora <span className="important">18:00</span>.
             </Fragment>,
         thankYou: "Vă mulțumim pentru răspuns!",
+        rsvpTitle: <Fragment>
+            Vă rugăm sa ne confirmați prezența înainte de <span className="important">1 iunie</span>
+        </Fragment>,
+        rsvpTooltip: "Ca să n-avem scandal.",
+        homeTooltip: "În sfârșit!",
         submitError: "Ne pare rau. A aparut o eroare. Va rugam contactati-ne la 0724 933 644",
         nameLabel: "Nume",
         phoneLabel: "Tel.",
@@ -80,6 +85,12 @@ export const localizations = {
         transportLabel: "Am nevoie de transport",
         noPresentLabel: "Nu pot participa, dar vin la urmatoarea.",
         yesPresentLabel: "Haida!",
-        namePlaceholder: "Nume"
+        namePlaceholder: "Nume",
+        helpfulTitle: "Informatii utile:",
+        helpfulOutside: "Se petrece in aer liber. Luați-vă umbrelele :))",
+        helpfulByDay: "Este un eveniment de zi (Irina are de invățat, se culcă devreme)",
+        helpfulTransport: "Există locuri de parcare, dar există și alcool. Organizăm transport din București.",
+        helpfulContact: "Pentru felicitări 0724 933 644 (Radu). Pentru reclamații 0723 025 398 (Irina).",
+        helpfulAccommodation: "",
     }
 }

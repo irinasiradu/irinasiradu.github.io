@@ -17,6 +17,10 @@ const sharedInputStyle = `
   border: 1px solid ${colors.grey};
   border-radius: 8px;
   
+  &:-internal-autofill-selected {
+    color: ${colors.grey} !important;
+  }
+
   &:focus {
     outline: none !important;
     box-shadow: 0 0 5px ${colors.grey};

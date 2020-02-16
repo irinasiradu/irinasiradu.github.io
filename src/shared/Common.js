@@ -47,7 +47,9 @@ export const localizations = {
         yesPresentLabel: "Prezent!",
         namePlaceholder: "Nume",
         helpfulTitle: "Informatii utile:",
-        helpfulOutside: "Se petrece in aer liber. Luați-vă umbrelele :))",
+        helpfulOutside: <React.Fragment>Se petrece in aer liber. Luați-vă umbrelele &nbsp;
+            <i class="em em-laughing" aria-label="SMILING FACE WITH OPEN MOUTH AND TIGHTLY-CLOSED EYES"></i>
+        </React.Fragment>,
         helpfulByDay: "Este un eveniment de zi (Irina are de invățat, se culcă devreme)",
         helpfulTransport: "Există locuri de parcare, dar există și alcool. Organizăm transport din București.",
         helpfulContact: "Pentru felicitări 0724 933 644 (Radu). Pentru reclamații 0723 025 398 (Irina).",
@@ -87,7 +89,9 @@ export const localizations = {
         yesPresentLabel: "Haida!",
         namePlaceholder: "Nume",
         helpfulTitle: "Informatii utile:",
-        helpfulOutside: "Se petrece in aer liber. Luați-vă umbrelele :))",
+        helpfulOutside: <React.Fragment>Se petrece in aer liber. Luați-vă umbrelele &nbsp;
+            <i class="em em-laughing" aria-label="SMILING FACE WITH OPEN MOUTH AND TIGHTLY-CLOSED EYES"></i>
+        </React.Fragment>,
         helpfulByDay: "Este un eveniment de zi (Irina are de invățat, se culcă devreme)",
         helpfulTransport: "Există locuri de parcare, dar există și alcool. Organizăm transport din București.",
         helpfulContact: "Pentru felicitări 0724 933 644 (Radu). Pentru reclamații 0723 025 398 (Irina).",

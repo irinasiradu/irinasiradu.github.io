@@ -9,7 +9,7 @@ import bgImg from "../assets/img/cover2.jpg";
 
 const Section = styled.section`
   padding-right: 0px;
-  padding-left: 0px;
+  padding-left: 0px; 
   margin-right: auto;
   margin-left: auto;
   background-repeat: no-repeat;

@@ -30,7 +30,7 @@ export const localizations = {
             </Fragment>,
         thankYou: "Vă mulțumim pentru răspuns!",
         rsvpTitle: <Fragment>
-            Vă rugăm sa ne confirmați prezența înainte de <span className="important">1 iunie</span>
+            Vă rugăm sa ne confirmați prezența înainte de <span className="important">18 iunie</span>
         </Fragment>,
         rsvpTooltip: "Ca să n-avem scandal.",
         homeTooltip: "În sfârșit!",
@@ -43,61 +43,57 @@ export const localizations = {
         rejectAction: "Nu, voi veni la urmatoarea!",
         submitButton: "Trimite răspuns",
         messagePlaceholder: "Mesaj",
-        otherAttendeesPlaceholder: "Insoțitori",
+        otherAttendeesPlaceholder: "Numele însoțitorilor",
         accommodationLabel: "Am nevoie de cazare",
         transportLabel: "Am nevoie de transport",
         noPresentLabel: "Nu pot participa, dar vin la urmatoarea.",
         yesPresentLabel: "Prezent!",
         namePlaceholder: "Nume",
         helpfulTitle: "Informatii utile:",
-        helpfulOutside: <React.Fragment>Se petrece in aer liber. Luați-vă umbrelele &nbsp;
-            <i class="em em-laughing" aria-label="SMILING FACE WITH OPEN MOUTH AND TIGHTLY-CLOSED EYES"></i>
-        </React.Fragment>,
-        helpfulByDay: "Este un eveniment de zi (Irina are de invățat, se culcă devreme)",
-        helpfulTransport: "Există locuri de parcare, dar există și alcool. Organizăm transport din București.",
+        helpfulOutside: "Petrecerea va avea loc in aer liber. Recomandăm pantofi comozi.",
+        helpfulByDay: "Este un eveniment de zi (Irina are de invățat, se culcă devreme).",
+        //helpfulTransport: "Există locuri de parcare, dar există și alcool. Organizăm transport din București.",
         helpfulContact: "Pentru felicitări 0724 933 644 (Radu). Pentru reclamații 0723 025 398 (Irina).",
         helpfulAccommodation: "",
     },
     "fr": {
-        homeDate: "18 juillet 2020",
+        homeDate: "18 Juillet 2020",
         daysLeft: (nrDays) => nrDays && (<Fragment><b>{nrDays}</b> jours restants</Fragment>),
-        detailsTitle: "Nous vous invitons!",
+        detailsTitle: "On vous invite!",
         ceremonyTitle:
             <Fragment>
-                <span className="important">Cununia religioasa</span> va avea loc la ora <span className="important">17:00</span> pe pajiștea de lângă lac.
+                <span className="important">La cérémonie religieuse</span> aura lieu à <span className="important">17:00</span> à coté du lac.
             </Fragment>,
         partyTitle:
             <Fragment>
-                <span className="important">Petrecerea</span> va continua pe terasa de la piscină începând cu ora <span className="important">18:00</span>.
+                <span className="important">la féte</span> continuera sur la terrasse à partir du <span className="important">18:00</span>.
             </Fragment>,
-        thankYou: "Vă mulțumim pentru răspuns!",
+        thankYou: "Merci pour votre réponse!",
         rsvpTitle: <Fragment>
-            Vă rugăm sa ne confirmați prezența înainte de <span className="important">1 iunie</span>
+            Merci de confirmer votre présence avant <span className="important">18 Juin</span>
         </Fragment>,
-        rsvpTooltip: "Ca să n-avem scandal.",
-        homeTooltip: "În sfârșit!",
-        submitError: "Ne pare rau. A aparut o eroare. Va rugam contactati-ne la 0724 933 644",
-        nameLabel: "Nume",
-        phoneLabel: "Tel.",
+        rsvpTooltip: "",
+        homeTooltip: "En fin!",
+        submitError: "Désolé, il y a une erreur. Merci de nous contacter au (0040)723 025 398.",
+        nameLabel: "Nom",
+        phoneLabel: "Téléphone.",
         emailLabel: "Email",
-        messageLabel: "Mesaj",
-        confirmAction: "Da, voi veni!",
-        rejectAction: "Nu, voi veni la urmatoarea!",
-        submitButton: "Trimite răspuns",
-        messagePlaceholder: "Mesaj",
-        otherAttendeesPlaceholder: "Insoțitori",
-        accommodationLabel: "Am nevoie de cazare",
-        transportLabel: "Am nevoie de transport",
-        noPresentLabel: "Nu pot participa, dar vin la urmatoarea.",
-        yesPresentLabel: "Haida!",
-        namePlaceholder: "Nume",
-        helpfulTitle: "Informatii utile:",
-        helpfulOutside: <React.Fragment>Se petrece in aer liber. Luați-vă umbrelele &nbsp;
-            <i class="em em-laughing" aria-label="SMILING FACE WITH OPEN MOUTH AND TIGHTLY-CLOSED EYES"></i>
-        </React.Fragment>,
-        helpfulByDay: "Este un eveniment de zi (Irina are de invățat, se culcă devreme)",
-        helpfulTransport: "Există locuri de parcare, dar există și alcool. Organizăm transport din București.",
-        helpfulContact: "Pentru felicitări 0724 933 644 (Radu). Pentru reclamații 0723 025 398 (Irina).",
+        messageLabel: "Message",
+        confirmAction: "J'arrive!",
+        rejectAction: "Non, peut etre à la prochaine!",
+        submitButton: "Envoyéz la réponse",
+        messagePlaceholder: "Message",
+        otherAttendeesPlaceholder: "Nom du compagnon",
+        accommodationLabel: "J'ai besoin d'un hébergement",
+        transportLabel: "J'ai besoin d'un transport",
+        noPresentLabel: "Non, peut etre à la prochaine!",
+        yesPresentLabel: "Présent!",
+        namePlaceholder: "Nom",
+        helpfulTitle: "Renseignements:",
+        helpfulOutside: "La féte aura lieu en extérieur. Nous recommandons des chaussures confortables.",
+        helpfulByDay: "C'est un événement de jour (Irina doit réviser, elle se couche tot).",
+        //helpfulTransport: "Există locuri de parcare, dar există și alcool. Organizăm transport din București.",
+        helpfulContact: "Pour des félicitations: 0040 724 933 644 (Radu). Pour des réclamations: 0040 723 025 398 (Irina).",
         helpfulAccommodation: "",
     }
 }

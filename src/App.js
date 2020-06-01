@@ -17,7 +17,7 @@ const App = () => {
     AOS.init({ once: true });
   });
 
-  const pathTokens = window.location.pathname.split("/");
+  const pathTokens = window.location.search.split("?lg=");
   const language = (pathTokens && pathTokens.length > 1 && languages.find(x => x === pathTokens[1])) || defaultLanguage;
   const localization = localizations[language];
 

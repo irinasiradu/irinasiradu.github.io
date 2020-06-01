@@ -233,9 +233,13 @@ class Rsvp extends Component {
     return (
       <Section className="row d-flex justify-content-center">
         <div className="col-md-12 title">
-          <SimpleTooltip title={localization.rsvpTooltip}>
-            {localization.rsvpTitle}
-          </SimpleTooltip>
+          {localization.rsvpTooltip &&
+            (<SimpleTooltip title={localization.rsvpTooltip}>
+              {localization.rsvpTitle}
+            </SimpleTooltip>)}
+          {!localization.rsvpTooltip &&
+            localization.rsvpTitle}
+
         </div>
         <div className="col-md-6">
           <Form onSubmit={this.handleSubmit}>

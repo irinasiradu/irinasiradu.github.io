@@ -112,7 +112,7 @@ const Details = ({ localization }) => {
             <ul>
               <li>{localization.helpfulOutside}</li>
               <li>{localization.helpfulByDay}</li>
-              <li>{localization.helpfulTransport}</li>
+              {/* <li>{localization.helpfulTransport}</li> */}
               {localization.helpfulAccommodation && (<li>{localization.helpfulAccommodation}</li>)}
               <li>{localization.helpfulContact}</li>
             </ul>

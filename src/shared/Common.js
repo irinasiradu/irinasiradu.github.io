@@ -30,7 +30,7 @@ export const localizations = {
             </Fragment>,
         thankYou: "Vă mulțumim pentru răspuns!",
         rsvpTitle: <Fragment>
-            Vă rugăm sa ne confirmați prezența înainte de <span className="important">18 iunie</span>
+            Vă rugăm sa ne confirmați prezența înainte de <span className="important">1 iulie</span>
         </Fragment>,
         rsvpTooltip: "Ca să n-avem scandal.",
         homeTooltip: "În sfârșit!",
@@ -70,7 +70,7 @@ export const localizations = {
             </Fragment>,
         thankYou: "Merci pour votre réponse!",
         rsvpTitle: <Fragment>
-            Merci de confirmer votre présence avant <span className="important">18 Juin</span>
+            Merci de confirmer votre présence avant <span className="important">1 Juillet</span>
         </Fragment>,
         rsvpTooltip: "",
         homeTooltip: "En fin!",

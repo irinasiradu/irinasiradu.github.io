@@ -23,11 +23,12 @@ const App = () => {
 
   return (
     <Fragment>
-      <main>
+      Thank you!
+      {/* <main>
         <Home localization={localization} />
         <Details localization={localization} />
         <Rsvp localization={localization} />
-      </main>
+      </main> */}
     </Fragment>
   );
 };
